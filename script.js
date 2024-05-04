@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
 const endPointAPI = 'https://api.imgflip.com/get_memes';
 
+buscaImg();
 async function buscaImg(){
 
     try{
@@ -28,9 +29,17 @@ function criarCards(img){
 
         div.appendChild(img);
         container.appendChild(div);
+
+        img.onclick = ()=> baixarImagem(img);
     })
 
 }
 
-    
-buscaImg();
+function baixarImagem(imagem){
+    const link = document.createElement('a');
+    link.setAttribute('href', `${imagem.src}`);
+    link.download = `${imagem.name}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
