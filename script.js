@@ -30,15 +30,15 @@ function criarCards(img){
         div.appendChild(img);
         container.appendChild(div);
 
-        img.onclick = ()=> baixarImagem(img);
+        img.onclick = ()=> baixarImagem(item);
     })
 
 }
 
 function baixarImagem(imagem){
     const link = document.createElement('a');
-    link.setAttribute('href', `${imagem.src}`);
-    link.download = `${imagem.name}.jpg`;
+    link.setAttribute('href', `${imagem.url}`);
+    link.download = imagem.name;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
