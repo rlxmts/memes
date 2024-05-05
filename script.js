@@ -38,6 +38,7 @@ function criarCards(img){
 function baixarImagem(imagem){
     const link = document.createElement('a');
     link.setAttribute('href', `${imagem.url}`);
+    link.setAttribute('target', `_blank`);
     link.download = imagem.name;
     document.body.appendChild(link);
     link.click();
