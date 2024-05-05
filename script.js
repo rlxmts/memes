@@ -23,24 +23,18 @@ function criarCards(img){
         const div = document.createElement('div');
         div.classList.add('container-img');
 
+        const link = document.createElement('a');
+        link.setAttribute('href', `${item.url}`);
+        link.setAttribute('target', `_blank`);
+        link.setAttribute('download', `${item.name}`)
+
         const img = document.createElement('img');
         img.setAttribute('src', `${item.url}`);
         img.classList.add('imagem');
-
-        div.appendChild(img);
+        
+        link.appendChild(img);
+        div.appendChild(link);
         container.appendChild(div);
-
-        img.onclick = ()=> baixarImagem(item);
     })
 
-}
-
-function baixarImagem(imagem){
-    const link = document.createElement('a');
-    link.setAttribute('href', `${imagem.url}`);
-    link.setAttribute('target', `_blank`);
-    link.download = imagem.name;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 }
